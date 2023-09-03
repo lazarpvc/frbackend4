@@ -4,7 +4,7 @@ const handleImage = (req, res, db) => {
       .where('id', '=', id)
       .increment('entries', 1)
       .returning('entries')
-      .then((entries) => {
+      .then(entries => {
         res.json(entries[0].entries);
       })
       .catch((err) => {
@@ -14,5 +14,5 @@ const handleImage = (req, res, db) => {
   };
 
   module.exports = {
-    handleImage
+    handleImage: handleImage
   }

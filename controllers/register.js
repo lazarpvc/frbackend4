@@ -38,8 +38,10 @@ const registerHandler = (req, res, db, bcrypt) => {
     })
     .catch((err) => {
       console.error("Error registering:", err);
-      res.status(500).json('internal server error');
+      res.status(500).json('internal server error, db');
     });
   };
 
-export default registerHandler;
+  module.exports = {
+    registerHandler: registerHandler
+  }

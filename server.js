@@ -11,9 +11,9 @@ const image = require('./controllers/image');
 
 const db = knex({
   client: 'pg',
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false},
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
     host: process.env.DATABASE_HOST,
     port: 5432,
     user: process.env.DATABASE_USER,
@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('success');
+  res.send('success kdlsa');
 });
 
 app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, db)})
@@ -40,7 +40,7 @@ app.put('/image', (req, res) => {image.handleImage(req, res, db)})
 
 app.post('/signin', (req,res) => {signin.handleSignin(req, res, db, bcrypt)})
 
-app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)})
+app.post('/register', (req, res) => {register.registerHandler(req, res, db, bcrypt)})
 
 const port = process.env.PORT || 4000;
 
